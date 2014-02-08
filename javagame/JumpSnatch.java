@@ -70,7 +70,7 @@ public class JumpSnatch extends Applet implements Runnable{
 		b = new Board2(dim_x, dim_y, Color.blue);
 		// TODO Auto-generated method stub
 		nameLabel = new Label("  Enter your name");
-		nameTextField = new TextField("Dennis Shasha");
+		nameTextField = new TextField("Barack Obama");
 		playerOneRadio = new MyRadioButton(playerOneChoice);
 		playerTwoRadio = new MyRadioButton(playerTwoChoice);
 		startButton = new StartButton(" Start ", this);
@@ -81,6 +81,7 @@ public class JumpSnatch extends Applet implements Runnable{
 		userMessage = new Label("    Welcome!!Enjoy the game!!");
 		userMessage.setForeground(Color.CYAN);
 		userMessage.setFont(new Font("Serif", Font.BOLD, 25));
+		userMessage.setPreferredSize(new Dimension(500, 25));
 		cc = new ColorChooser();
 		//test mouse 
 		me = new MouseTest();
@@ -133,14 +134,24 @@ public class JumpSnatch extends Applet implements Runnable{
 		}
 	}
 	public String getWinner(){
-		if(winner == 1 && player1 && !player2 || winner == 2 && !player1 && player2){
-			return nameTextField.getText();
-		}
-		else
+		if(nameTextField.getText().equals("Barack Obama"))
 			return "not set";
+		else
+			return nameTextField.getText();
+		
+		
 	}
 	public String getWinnerScore(){
-		return "" +k.getScore();
+		if(winner == 1 && player1 && !player2 || winner == 2 && !player1 && player2){
+			return "WIN";
+		}
+		else if(winner == 2 && player1 && !player2 || winner == 1 && !player1 && player2){
+			return "LOSE";
+		}
+		else{
+			return "0";
+		}
+		
 	}
 	public void setEnable(boolean bool){
 		playerOneRadio.setEnabled(bool);

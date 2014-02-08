@@ -31,6 +31,13 @@ public class SmartPlayer {
 			start.set(best_move.start.x, best_move.start.y);
 			end.set(best_move.end.x, best_move.end.y);
 		}
+		else if(k.count()<= 4 && k.getWidth() == 3 && k.getHeight() == 3){
+			value = alphabeta(k, -1000, 1000, true, best_move, 0);
+			System.out.println("this is best_move, value: " + value);
+			best_move.show();
+			start.set(best_move.start.x, best_move.start.y);
+			end.set(best_move.end.x, best_move.end.y);
+		}
 		else{
 			RandomPlayer rp = new RandomPlayer(k.getWidth(), k.getHeight());
 			rp.get_move(k, start, end);
@@ -48,6 +55,9 @@ public class SmartPlayer {
 			else{
 				return 1;
 			}
+		}
+		if(depth > k.count()*(k.getWidth()+k.getHeight())){
+			return 0.5;
 		}
 		ArrayList<Move> moveLs = new ArrayList<Move>();
 		get_all_moves(k, moveLs);
